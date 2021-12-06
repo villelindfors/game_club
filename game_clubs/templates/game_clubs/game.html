@@ -1,0 +1,32 @@
+{% extends "game_clubs/base.html" %}
+{% block content %}
+
+<p>Board Game: {{ game }}</p>
+
+<p>Review:</p>
+
+<ul>
+    {% for review in reviews %}
+    <li>
+        <p>{{ review.date_added|date:'M d, Y H:i' }}</p>
+        <p>{{ review.my_review|linebreaks }}</p>
+
+    </li>
+    {% empty %}
+    <li>No board games here yet</li>
+    {% endfor %}
+</ul>
+
+<p>Loans:</p>
+
+{% for loan in loans %}
+<li>
+    <p>{{ loan.date_added|date:'M d, Y H:i' }}</p>
+    <p>{{ loan.my_loan|linebreaks }}</p>
+
+</li>
+{% empty %}
+<li>No loans yet</li>
+{% endfor %}
+
+{% endblock content %}
