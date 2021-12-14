@@ -4,11 +4,13 @@
 <p>Board Game: {{ game }}</p>
 
 
-
-<p>Loans for the game:</p>
+<p>Loan the game and give a estimate how long you are going to keep the board game</p>
+<p>Remember to check that the game is available!</p>
 <p>
 <a href="{% url 'game_clubs:new_loan' game.id %}">Add new loan</a>
 </p>
+<p>Loans for the game:</p>
+<ul>
 {% for loan in loans %}
 <li>
     <p>{{ loan.date_added|date:'M d, Y H:i' }}</p>
@@ -20,5 +22,6 @@
 {% empty %}
 <li>No loans yet</li>
 {% endfor %}
+</ul>
 
 {% endblock content %}
