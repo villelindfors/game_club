@@ -3,27 +3,19 @@
 
 <p>Board Game: {{ game }}</p>
 
-<p>Review:</p>
 
-<ul>
-    {% for review in reviews %}
-    <li>
-        <p>{{ review.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ review.my_review|linebreaks }}</p>
 
-    </li>
-    {% empty %}
-    <li>No board games here yet</li>
-    {% endfor %}
-</ul>
-
-<p>Loans:</p>
-
+<p>Loans for the game:</p>
+<p>
+<a href="{% url 'game_clubs:new_loan' game.id %}">Add new loan</a>
+</p>
 {% for loan in loans %}
 <li>
     <p>{{ loan.date_added|date:'M d, Y H:i' }}</p>
     <p>{{ loan.my_loan|linebreaks }}</p>
-
+    <p>
+    <a href="{% url 'game_clubs:edit_loan' loan.id %}">Edit loan</a>
+    </p>   
 </li>
 {% empty %}
 <li>No loans yet</li>
