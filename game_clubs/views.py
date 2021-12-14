@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from .models import Game, Loan
 from .forms import GameForm, LoanForm
+from django.http import Http404
 
 # Create your views here.
 def index(request):
@@ -58,8 +59,8 @@ def edit_loan(request, loan_id):
     game = loan.game
 
     #Protecting edit loan page
-    #if book.owner != request.user:
-     #   raise Http404
+    if game.owner != request.user:
+       raise Http404
 
     if request.method != 'POST':
         form = LoanForm(instance=loan)

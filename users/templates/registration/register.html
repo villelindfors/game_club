@@ -1,0 +1,16 @@
+{% extends "game_clubs/base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+   
+{% endif %}
+<form method="post" action="{% url 'users:register' %}" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit">Register</button>
+
+    <input type="hidden" name="next" value="{% url 'game_clubs:index' %}"/>
+</form>
+{% endblock content %}
